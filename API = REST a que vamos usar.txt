@@ -1,0 +1,14 @@
+API => REST a que vamos usar
+APIs fala com o banco de dados
+ou seja precisa de uma ferramenta que traduz para o banco de dados nome da do java: JPA
+e vamos usar o JPA com o HIBERNATE que e uma implementação
+O HIBERNANTE e uma ORM  - uma ferramenta que mapea codigo SLQ, toda linguagem vai ter uma ORM
+
+Spring Framework
+simplifica o desenvolvimento, um "pacotão" 
+
+Spring boot: 
+
+ele permite criar aplicações prontas em minutos
+
+
