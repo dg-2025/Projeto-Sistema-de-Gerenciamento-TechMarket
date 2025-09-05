@@ -4,21 +4,21 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.time.OffsetDateTime;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "pagamento", schema = "ecommerce")
+@Table(name = "pagamento", schema = "techmarket")
 public class Pagamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pagamento_id", nullable = false)
+    @Column(name = "id_pagamento", nullable = false)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "pedido_id", nullable = false)
-    private Pedido pedido;
+    @JoinColumn(name = "id_pedido", nullable = false)
+    private Pedido idPedido;
 
     @Column(name = "forma_pagamento", nullable = false, length = Integer.MAX_VALUE)
     private String formaPagamento;
@@ -27,6 +27,6 @@ public class Pagamento {
     private String status;
 
     @Column(name = "data_pagamento", nullable = false)
-    private LocalDate dataPagamento;
+    private OffsetDateTime dataPagamento;
 
 }

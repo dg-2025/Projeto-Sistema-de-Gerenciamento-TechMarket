@@ -7,17 +7,17 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "categoria", schema = "ecommerce")
+@Table(name = "categoria", schema = "techmarket")
 public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "categoria_id", nullable = false)
+    @Column(name = "id_categoria", nullable = false)
     private Integer id;
 
     @Column(name = "nome_categoria", nullable = false, length = Integer.MAX_VALUE)
     private String nomeCategoria;
 
-    @Column(name = "descricao", nullable = false, length = Integer.MAX_VALUE)
+    @Column(name = "descricao", length = Integer.MAX_VALUE)
     private String descricao;
 
 }

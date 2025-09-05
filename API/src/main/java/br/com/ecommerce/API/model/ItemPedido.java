@@ -7,20 +7,20 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "item_do_pedido", schema = "ecommerce")
-public class ItemDoPedido {
+@Table(name = "item_pedido", schema = "techmarket")
+public class ItemPedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "item_id", nullable = false)
+    @Column(name = "id_item", nullable = false)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "pedido_id", nullable = false)
-    private Pedido pedido;
+    @JoinColumn(name = "id_pedido", nullable = false)
+    private Pedido idPedido;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "produto_id", nullable = false)
-    private Produto produto;
+    @JoinColumn(name = "id_produto", nullable = false)
+    private Produto idProduto;
 
     @Column(name = "quantidade", nullable = false)
     private Integer quantidade;

@@ -9,21 +9,24 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Entity
-@Table(name = "produto", schema = "ecommerce")
+@Table(name = "produto", schema = "techmarket")
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "produto_id", nullable = false)
+    @Column(name = "id_produto", nullable = false)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "categoria_id", nullable = false)
-    private Categoria categoria;
+    @JoinColumn(name = "id_categoria", nullable = false)
+    private Categoria idCategoria;
 
-    @Column(name = "descricao", nullable = false, length = Integer.MAX_VALUE)
+    @Column(name = "nome_produto", nullable = false, length = Integer.MAX_VALUE)
+    private String nomeProduto;
+
+    @Column(name = "descricao", length = Integer.MAX_VALUE)
     private String descricao;
 
-    @Column(name = "preco", precision = 10, scale = 4)
+    @Column(name = "preco", nullable = false, precision = 14, scale = 4)
     private BigDecimal preco;
 
     @Column(name = "estoque_disponivel", nullable = false)
@@ -31,8 +34,5 @@ public class Produto {
 
     @Column(name = "imagem_url", length = Integer.MAX_VALUE)
     private String imagemUrl;
-
-    @Column(name = "nome_produto", nullable = false, length = Integer.MAX_VALUE)
-    private String nomeProduto;
 
 }

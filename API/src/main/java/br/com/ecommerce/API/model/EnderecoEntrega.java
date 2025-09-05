@@ -7,16 +7,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "endereco_de_entrega", schema = "ecommerce")
-public class EnderecoDeEntrega {
+@Table(name = "endereco_entrega", schema = "techmarket")
+public class EnderecoEntrega {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "endereco_id", nullable = false)
+    @Column(name = "id_endereco", nullable = false)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "cliente_id", nullable = false)
-    private Cliente cliente;
+    @JoinColumn(name = "id_cliente", nullable = false)
+    private Cliente idCliente;
 
     @Column(name = "logradouro", nullable = false, length = Integer.MAX_VALUE)
     private String logradouro;
@@ -24,7 +24,7 @@ public class EnderecoDeEntrega {
     @Column(name = "numero", nullable = false)
     private Integer numero;
 
-    @Column(name = "complemento", nullable = false, length = Integer.MAX_VALUE)
+    @Column(name = "complemento", length = Integer.MAX_VALUE)
     private String complemento;
 
     @Column(name = "bairro", nullable = false, length = Integer.MAX_VALUE)

@@ -2,9 +2,12 @@ package br.com.ecommerce.API.service;
 
 import br.com.ecommerce.API.model.Produto;
 import br.com.ecommerce.API.repository.ProdutoRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Service
 public class ProdutoService {
     private final ProdutoRepository produtoRepository;
 
