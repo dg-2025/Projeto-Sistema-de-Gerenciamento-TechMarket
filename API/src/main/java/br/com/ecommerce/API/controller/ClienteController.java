@@ -20,7 +20,7 @@ public class ClienteController {
     //listar Todos
     @GetMapping
     public ResponseEntity<List<Cliente>> ListarClientes() {
-        List<Cliente> clientes = clienteService.ListarTodos();
+            List<Cliente> clientes = clienteService.ListarTodos();
         return ResponseEntity.ok(clientes);
 
     }

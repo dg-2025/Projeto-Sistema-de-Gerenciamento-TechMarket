@@ -10,10 +10,12 @@ import java.util.List;
 public class ItemPedidoService {
     private final ItemPedidoRepository itemPedidoRepository;
     public ItemPedidoService(ItemPedidoRepository Repo) {
+
         this.itemPedidoRepository = Repo;
     }
-    public List<ItemPedido> ListarTodos()
-    {
+
+    public List<ItemPedido> ListarTodos(){
+
         return this.itemPedidoRepository.findAll();
     }
 }
