@@ -19,4 +19,7 @@ public class PagamentoService {
     public List<Pagamento> listarPagamentos(){
         return this.pagamentoRepository.findAll();
     }
+    public Pagamento NovoPagamento(Pagamento fazupix){
+        return pagamentoRepository.save(fazupix);
+    }
 }

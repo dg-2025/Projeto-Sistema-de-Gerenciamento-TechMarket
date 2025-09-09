@@ -4,9 +4,7 @@ import br.com.ecommerce.API.model.Produto;
 import br.com.ecommerce.API.repository.ProdutoRepository;
 import br.com.ecommerce.API.service.ProdutoService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +22,10 @@ public class ProdutoController {
     public ResponseEntity<List<Produto>> ListarProdutos() {
         List<Produto> Produto = produtoService.listaProdutos();
         return ResponseEntity.ok(Produto);
+    }
+    @PostMapping
+    public ResponseEntity<Produto> cadastrarProduto(@RequestBody Produto prod){
+        produtoService.cadastrarProduto(prod);
+        return ResponseEntity.ok(prod);
     }
 }

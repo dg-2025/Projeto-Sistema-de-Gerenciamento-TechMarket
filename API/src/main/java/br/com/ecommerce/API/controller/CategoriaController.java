@@ -3,9 +3,7 @@ package br.com.ecommerce.API.controller;
 import br.com.ecommerce.API.model.Categoria;
 import br.com.ecommerce.API.service.CatergoriaService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +19,10 @@ public class CategoriaController {
     public ResponseEntity<List<Categoria>> ListarCategorias(){
         List<Categoria> categorias = catergoriaService.ListarTodos();
         return ResponseEntity.ok(categorias);
+    }
+    @PostMapping
+    public ResponseEntity<Categoria> AdicionarCategoria(@RequestBody Categoria categoria){
+        catergoriaService.NovoCategoria(categoria);
+        return ResponseEntity.ok(categoria);
     }
 }

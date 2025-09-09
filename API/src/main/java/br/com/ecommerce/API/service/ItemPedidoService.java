@@ -18,4 +18,7 @@ public class ItemPedidoService {
 
         return this.itemPedidoRepository.findAll();
     }
+    public ItemPedido NovoItemPedido(ItemPedido itemPedido){
+        return itemPedidoRepository.save(itemPedido);
+    }
 }

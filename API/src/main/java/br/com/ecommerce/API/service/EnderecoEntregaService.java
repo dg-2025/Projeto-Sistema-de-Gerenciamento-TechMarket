@@ -18,4 +18,7 @@ public class EnderecoEntregaService {
         return this.enderecoEntregaRepository.findAll();
         
     }
+    public EnderecoEntrega NovoEndereco(EnderecoEntrega endereco){
+        return enderecoEntregaRepository.save(endereco);
+    }
 }
