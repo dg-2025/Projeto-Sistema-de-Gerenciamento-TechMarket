@@ -16,6 +16,7 @@ public class ClienteController {
     public ClienteController(ClienteService service) {
         this.clienteService = service;
     }
+
     //listar Todos
     @GetMapping
     public ResponseEntity<List<Cliente>> ListarClientes() {
@@ -23,6 +24,18 @@ public class ClienteController {
         return ResponseEntity.ok(clientes);
 
     }
+
+    //Buscar por id
+    @GetMapping("/{id}")
+    public ResponseEntity<Cliente> buscarClientePorId(@PathVariable Integer id){
+        Cliente cliente = clienteService.buscarClientePorId(id);
+        if(cliente == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(cliente);
+    }
+
+    // Cadastrar Novo Cliente
     @PostMapping
     public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente novoCliente){
         // 1. tentar cadastrar cliente
@@ -30,5 +43,26 @@ public class ClienteController {
         return ResponseEntity.status(HttpStatus.CREATED).body(novoCliente);
         //Codigo 201 - CREATE
     }
+    //Atualizar um Produto
+    @PutMapping("/{id}")
+    public ResponseEntity<Cliente> atualizarCliente(@PathVariable Integer id, @RequestBody Cliente novoCliente){
+        Cliente clienteAtualizado = clienteService.atualizarCliente(id, novoCliente);
+        if(clienteAtualizado == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(clienteAtualizado);
+    }
+
+    //Deletar produto
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Cliente> removerCliente(@PathVariable Integer id){
+        Cliente deletarCliente = clienteService.deletarCliente(id);
+        if(deletarCliente == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(deletarCliente);
+    }
+
+
 
 }
