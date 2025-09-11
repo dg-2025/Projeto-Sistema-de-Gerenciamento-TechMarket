@@ -19,7 +19,35 @@ public class ProdutoService {
         return produtoRepository.findAll();
     }
 
+    //adicionar
     public Produto cadastrarProduto(Produto prod){
         return produtoRepository.save(prod);
     }
+
+    //Buscar
+    public Produto buscarProduto(int id){
+        return produtoRepository.findById(id).orElse(null);
+    }
+
+    //Atulizar
+    public Produto atualizarProduto(int id, Produto autualizarProduto){
+        Produto produtoExistente = buscarProduto(id);
+        if(produtoExistente == null) {
+            return null;
+        }
+
+        produtoExistente.setNomeProduto(autualizarProduto.getNomeProduto());
+        return produtoRepository.save(produtoExistente);
+    }
+
+    //Excluir
+    public Produto excluirProduto(int id){
+        Produto produtoExistente = buscarProduto(id);
+        if(produtoExistente == null) {
+            return null;
+        }
+        produtoRepository.delete(produtoExistente);
+        return produtoExistente;
+    }
+
 }
