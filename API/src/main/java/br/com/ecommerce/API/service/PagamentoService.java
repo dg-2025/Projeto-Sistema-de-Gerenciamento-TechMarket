@@ -15,11 +15,35 @@ public class PagamentoService {
 
         this.pagamentoRepository = Repo;
     }
-
+    //Listar pagamentos
     public List<Pagamento> listarPagamentos(){
         return this.pagamentoRepository.findAll();
     }
+    //Adicionar pagamento
     public Pagamento NovoPagamento(Pagamento fazupix){
         return pagamentoRepository.save(fazupix);
+    }
+
+    //Buscar pagamento
+    public Pagamento buscarPagamentoPorId(int id){
+        return pagamentoRepository.findById(id).orElse(null);
+    }
+    //Atualizar pagamento
+    public Pagamento editarPagamento(int id, Pagamento atualizado){
+        Pagamento idPagamento = buscarPagamentoPorId(id);
+        if(idPagamento != null){
+            return null;
+        }
+        idPagamento.setStatus(atualizado.getStatus());
+        return pagamentoRepository.save(atualizado);
+    }
+    //Excluir pagamento
+    public Pagamento excluirPagamento(int id){
+        Pagamento idPagamento = buscarPagamentoPorId(id);
+        if(idPagamento != null){
+            return null;
+        }
+        pagamentoRepository.deleteById(id);
+        return idPagamento;
     }
 }

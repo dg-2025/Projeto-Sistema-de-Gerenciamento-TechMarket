@@ -12,9 +12,11 @@ public class PedidoService {
     public PedidoService(PedidoRepository repo) {
         this.pedidoRepository = repo;
     }
+    //listar
     public List<Pedido> ListarTodos() {
         return pedidoRepository.findAll();
     }
+    //Cadastrar
     public Pedido cadastrarPedido(Pedido pdd){
         return pedidoRepository.save(pdd);
     }

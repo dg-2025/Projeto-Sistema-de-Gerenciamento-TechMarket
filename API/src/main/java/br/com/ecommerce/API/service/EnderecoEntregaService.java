@@ -14,11 +14,43 @@ public class EnderecoEntregaService {
         this.enderecoEntregaRepository = repo;
         
     }
+    //Listar todos
     public List<EnderecoEntrega> ListarEnderecos(){
         return this.enderecoEntregaRepository.findAll();
-        
+
     }
+
+    //Adicionar Endereco
     public EnderecoEntrega NovoEndereco(EnderecoEntrega endereco){
         return enderecoEntregaRepository.save(endereco);
     }
+
+    //Buscar
+    public EnderecoEntrega buscarEnderecoPorId(int id){
+        return this.enderecoEntregaRepository.findById(id).orElse(null);
+    }
+
+    //Atualizar
+    public EnderecoEntrega atualizarEndereco(int id, EnderecoEntrega endereco){
+        EnderecoEntrega idEndereco = this.buscarEnderecoPorId(id);
+        if (idEndereco == null){
+            return null;
+        }
+        idEndereco.setCep(endereco.getCep());
+        return enderecoEntregaRepository.save(endereco);
+    }
+
+    //Excluir
+    public EnderecoEntrega excluirEndereco(int id){
+        EnderecoEntrega idEndereco = this.buscarEnderecoPorId(id);
+        if (idEndereco == null){
+            return null;
+        }
+        enderecoEntregaRepository.delete(idEndereco);
+        return idEndereco;
+    }
+
+
+
+
 }

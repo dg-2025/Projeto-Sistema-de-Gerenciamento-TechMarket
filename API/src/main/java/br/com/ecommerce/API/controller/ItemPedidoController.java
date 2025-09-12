@@ -27,4 +27,32 @@ public class ItemPedidoController {
         return ResponseEntity.ok(itemPedido);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> BuscarItemPedidoPorId(@PathVariable int id){
+        ItemPedido itemPedido = itemPedidosService.BuscarItemPedidoPorId(id);
+        if (itemPedido == null){
+            return ResponseEntity.badRequest().body("id não encontrado");
+        }
+        return ResponseEntity.ok(itemPedido);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> AtualizarItemPedidoPorId(@PathVariable int id, @RequestBody ItemPedido itemPedido){
+        ItemPedido itemDoPedido = itemPedidosService.AtualizarItemPedido(id, itemPedido);
+        if (itemDoPedido == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(itemDoPedido);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> RemoverItemPedidoPorId(@PathVariable int id){
+        ItemPedido itemDoPedido =  itemPedidosService.excluirItemPedido(id);
+        if (itemDoPedido == null){
+            return ResponseEntity.badRequest().body("id ão encrontrado");
+
+        }
+        return ResponseEntity.ok(itemDoPedido);
+    }
+
 }

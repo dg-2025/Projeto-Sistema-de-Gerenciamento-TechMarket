@@ -23,9 +23,39 @@ public class EnderecoEntregaController {
         List<EnderecoEntrega> EnderecosEntregas = enderecoEntregaService.ListarEnderecos();
         return ResponseEntity.ok(EnderecosEntregas);
     }
+
     @PostMapping
     public ResponseEntity<EnderecoEntrega>  AdicionarEndereco(@RequestBody EnderecoEntrega endereco){
         enderecoEntregaService.NovoEndereco(endereco);
         return ResponseEntity.ok(endereco);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarEnderecoPorId(@PathVariable int id){
+        EnderecoEntrega idEndereco = enderecoEntregaService.buscarEnderecoPorId(id);
+        if (idEndereco == null){
+            return ResponseEntity.badRequest().body("id não encontrado");
+
+        }
+        return ResponseEntity.ok(idEndereco);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> atualizarEndereco(@PathVariable int id, @RequestBody EnderecoEntrega endereco){
+        EnderecoEntrega idEndereco = enderecoEntregaService.atualizarEndereco(id, endereco);
+        if (idEndereco == null){
+            return ResponseEntity.badRequest().body("id não encontrado");
+        }
+        return ResponseEntity.ok(idEndereco);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> removerEnderecoPorId(@PathVariable int id){
+        EnderecoEntrega idEndereco = enderecoEntregaService.excluirEndereco(id);
+        if (idEndereco == null){
+            return ResponseEntity.badRequest().body("id não encontrado");
+        }
+        return ResponseEntity.ok(idEndereco);
+    }
+
 }
